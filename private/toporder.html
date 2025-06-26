@@ -278,12 +278,12 @@
 <body>
   <div id="overlay"></div>
   <header>
-    <a href="dashboard.html" class="logo">guIDe</a>
+    <a href="/dashboard.html" class="logo">guIDe</a>
     <nav>
-      <a href="guide.html">guIDe Me</a>
-      <a href="toporder.html">Tracker</a>
-      <a href="about.html">About guIDe</a>
-      <a href="profile.html">My Profile</a>
+      <a href="/guide.html">guIDe Me</a>
+      <a href="/toporder.html">Tracker</a>
+      <a href="/about.html">About guIDe</a>
+      <a href="/profile.html">My Profile</a>
       <div class="menu-container">
           <button class="menu-btn">☰</button>
           <div class="dropdown-menu">
@@ -646,7 +646,10 @@
     renderOwnedCards("ownedIDs", owned);
   </script>
 
- 
+ <script>
+  sessionStorage.setItem("isLoggedIn", "true");
+</script>
+
 
 </body>
 </html>
