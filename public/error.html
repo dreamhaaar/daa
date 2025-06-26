@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Error</title>
+</head>
+<body>
+  <h1>❌ Something went wrong</h1>
+  <p id="msg">Unknown error</p>
+  <a href="/dashboard.html">Back to dashboard</a>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const msg = params.get("msg");
+    if (msg) {
+      document.getElementById("msg").textContent = decodeURIComponent(msg);
+    }
+  </script>
+</body>
+</html>

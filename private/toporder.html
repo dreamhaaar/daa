@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>guIDe Me – Suggested IDs</title>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+        body {
+      margin: 0;
+      font-family: 'League Spartan', sans-serif;
+      background-color: #f5f5e8;
+      color: #2c2c2c;
+      background-image: url('bg1.png');
+    }
+    header {
+      background-color: #dce3c1;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+      color: #2c2c2c;
+      text-decoration: none;
+    }
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #b9c9a8;
+    }
+    main {
+      max-width: 1000px;
+      margin: 60px auto;
+      background-color: #dce3c1;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+     .menu-container {
+      position: relative;
+      display: inline-block;
+      margin-left: 15px;
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-btn:hover {
+      background-color: #b9c9a8;
+    }
+        
+    .menu-container:hover .dropdown-menu {
+    display: block;
+  } 
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      z-index: 1;
+      min-width: 120px;
+      border-radius: 7px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+      .dropdown-menu a {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 10px;
+        margin: 0;
+        border-radius: 1;
+        text-decoration: none;
+        color: #333;
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #dce3c1;
+    }
+    .id-card {
+      background-color: #ffffff;
+      border: 2px solid #aaa;
+      border-radius: 12px;
+      padding: 15px 20px;
+      font-weight: 600;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      background-image: url('card.jpg');
+      background-size: cover;
+    }
+    .id-card:hover {
+      transform: scale(1.03);
+    }
+    .id-card.done {
+      background-image: url('card1.jpg');
+      color: black;
+      border-color: #757E60;
+    }
+    .id-header {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 190px);
+      justify-content: flex-start;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(5px);
+      z-index: 99;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    #overlay.active {
+      display: block;
+      opacity: 1;
+    }
+    #output1 .id-card,
+    #ownedIDs .id-card {
+      width: 150px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    #popup {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      padding: 20px;
+      width: 800px;
+      max-height: 80vh;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      transition: opacity 0.3s ease;
+    }
+    #popup.active {
+      display: grid;
+      visibility: visible;
+      opacity: 1;
+    }
+    #popup h3 {
+      grid-column: span 2;
+      margin: 0 0 10px;
+      font-size: 22px;
+      text-align: center;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #popupReqs,
+    #popupSteps {
+      background-color: #e8f1d2;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    #popupReqs li,
+    #popupSteps li {
+      list-style: none;
+      margin-bottom: 8px;
+    }
+    #popupReqs input[type="checkbox"],
+    #popupSteps input[type="checkbox"] {
+      margin-right: 8px;
+      transform: scale(1.1);
+    }
+    #popupWhere {
+      grid-column: span 1;
+      margin-top: -10px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+    }
+    #alertMessage {
+      grid-column: 2;
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: red;
+      font-weight: bold;
+      display: none;
+      text-align: center;
+    }
+    #markDoneBtn {
+      grid-column: span 2;
+      margin-top: 0;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      justify-self: end;
+      cursor: pointer;
+    }
+    .ready-card-body {
+      font-size: 12px;
+      margin-top: 6px;
+      max-height: 60px;
+      overflow-y: auto;
+      color: #444;
+    }
+
+    .ready-mark-btn {
+      margin-top: 8px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .ready-mark-btn:hover {
+      background-color: #3e8e41;
+    }
+
+    .id-card.done .ready-mark-btn {
+      background-color: #757E60;
+      cursor: default;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div id="overlay"></div>
+  <header>
+    <a href="dashboard.html" class="logo">guIDe</a>
+    <nav>
+      <a href="guide.html">guIDe Me</a>
+      <a href="toporder.html">Tracker</a>
+      <a href="about.html">About guIDe</a>
+      <a href="profile.html">My Profile</a>
+      <div class="menu-container">
+          <button class="menu-btn">☰</button>
+          <div class="dropdown-menu">
+            <a href="#">Settings</a>
+            <a href="/login.html" id="logout-btn">Logout</a>
+
+          </div>
+        </div>
+    </nav>
+  </header>
+  <main>
+    <h2>Already Selected / Owned IDs</h2>
+    <div id="ownedIDs" class="grid-container"></div>
+
+    <h2>Ready to Acquire Documents</h2>
+    <div id="output1" class="grid-container"></div>
+
+    <h2>Recommended Acquisition Order</h2>
+    <div id="output2" class="grid-container"></div>
+  </main>
+
+  <div id="popup">
+    <button class="close-btn" onclick="closePopup()">&times;</button>
+    <h3 id="popupTitle">ID Name</h3>
+    <div>
+      <strong>Requirements</strong>
+      <ul id="popupReqs"></ul>
+    </div>
+    <div>
+      <strong>Steps</strong>
+      <ul id="popupSteps"></ul>
+    </div>
+    <p id="popupWhere"><strong>Where to Apply:</strong> <span></span></p>
+    <div id="alertMessage">Please check all items before marking as done, and ensure all previous cards are marked as done.</div>
+    <button id="markDoneBtn">Mark as Done</button>
+  </div>
+
+  <script>
+        const idData = {
+      "Passport": {
+        requirements: ["PSA Birth Certificate", "Valid ID", "Proof of Residence"],
+        where: "DFA (Department of Foreign Affairs)",
+        steps: [
+          "Set appointment at <a href='https://www.passport.gov.ph' target='_blank'>passport.gov.ph</a>",
+          "Prepare all requirements",
+          "Pay fee (PHP 950-1200)",
+          "Get biometrics taken",
+          "Wait 12–14 working days"
+        ]
+      },
+      "TIN ID": {
+        requirements: ["Birth Certificate", "Valid ID"],
+        where: "BIR Office",
+        steps: ["Fill out Form 1904", "Submit requirements", "Receive TIN ID"]
+      },
+      "SSS ID": {
+        requirements: ["SSS Number", "Valid ID"],
+        where: "SSS Branch",
+        steps: ["Set appointment", "Submit documents", "Biometrics capture", "Wait for release"]
+      },
+      "PhilHealth ID": {
+        requirements: ["Valid ID", "PhilHealth Number"],
+        where: "PhilHealth Branch",
+        steps: ["Submit application", "Wait for ID issuance"]
+      },
+      "NBI Clearance": {
+        requirements: ["Valid ID"],
+        where: "NBI Center",
+        steps: ["Book online appointment", "Pay fee", "Go to NBI for biometrics", "Receive clearance"]
+      },
+      "UMID": {
+        requirements: ["SSS Number", "Valid ID"],
+        where: "SSS Office",
+        steps: ["Apply via SSS", "Biometrics and photo", "Wait for delivery"]
+      },
+      "Cedula": {
+        requirements: ["Valid ID"],
+        where: "Barangay Hall",
+        steps: ["Submit ID", "Pay Cedula fee", "Receive Cedula"]
+      },
+      "Pag-IBIG ID": {
+        requirements: ["Membership Form", "Valid ID"],
+        where: "Pag-IBIG Branch",
+        steps: ["Submit application", "Get MID number", "Receive ID"]
+      },
+      "PhilSys ID": {
+        requirements: [
+          "PSA Birth Certificate",
+          "One valid ID OR Barangay Certificate",
+          "Proof of residence"
+        ],
+        where: "PhilSys registration center / SM malls / LGU kiosks",
+        steps: [
+          "Book online at <a href='https://register.philsys.gov.ph' target='_blank'>register.philsys.gov.ph</a> or walk-in",
+          "Bring your documents",
+          "Undergo biometric capture",
+          "Wait for ID delivery (2 weeks to 3 months)"
+        ]
+      },
+      "Driver's License": {
+        requirements: [
+          "Medical Certificate (LTO-accredited clinic)",
+          "TIN (if employed)",
+          "Valid ID (e.g., Postal, PhilSys)"
+        ],
+        where: "LTO branch",
+        steps: [
+          "Apply for Student Permit (if no previous license)",
+          "Attend Theoretical Driving Course",
+          "Take Practical Driving Course",
+          "Submit requirements and pass the written and practical exams",
+          "Pay fees (varies)"
+        ]
+      },
+      "PRC ID": {
+        requirements: [
+          "Proof of passing board exam",
+          "TOR (Transcript of Records)",
+          "PSA Birth Certificate",
+          "Valid ID"
+        ],
+        where: "PRC Online at online.prc.gov.ph",
+        steps: [
+          "Register online and set an appointment",
+          "Pay online or through Bayad Centers",
+          "Submit documents at PRC on appointment day",
+          "Receive PRC ID"
+        ]
+      },
+      "Voter's Certificate": {
+        requirements: ["PSA Birth Certificate", "Proof of residence"],
+        where: "COMELEC office (city/municipality)",
+        steps: [
+          "Go to COMELEC for registration",
+          "Submit documents and biometrics",
+          "Wait for voter's certificate (IDs are no longer printed as of recent policies)"
+        ]
+      },
+      "PNP Clearance": {
+        requirements: [],
+        where: "PNP Clearance Center",
+        steps: [
+          "Register at <a href='https://pnpclearance.ph' target='_blank'>pnpclearance.ph</a>",
+          "Set appointment",
+          "Pay fee (~P200)",
+          "Biometrics capture & background check",
+          "Receive clearance"
+        ]
+      }, 
+      "PSA Birth Certificate": {
+        requirements: [
+          "Valid ID or Barangay Clearance",
+          "Duly accomplished application form (can be done online or onsite)"
+        ],
+        where: "Online via <a href='https://psahelpline.ph' target='_blank'>PSAHelpline.ph</a> or <a href='https://serbilis.psa.gov.ph' target='_blank'>serbilis.psa.gov.ph</a>",
+        steps: [
+          "Fill out the application form (online or onsite)",
+          "Pay the fee (₱365 online, ₱155 walk-in)",
+          "Receive certificate (2–7 working days depending on delivery or pick-up)"
+        ]
+      },
+      "Proof of Residence": {
+        requirements: [
+          "Any document that links your name to your address:",
+          "- Barangay Certificate of Residency",
+          "- Recent utility bill under your name",
+          "- Lease contract or Homeowner's Certification"
+        ],
+        where: "Barangay Hall",
+        steps: [
+          "Go to your Barangay Hall",
+          "Request a Certificate of Residency",
+          "Bring valid ID and any bill or document confirming your address",
+          "Pay minimal fee (₱20–₱100 depending on barangay)",
+          "Receive certificate same day"
+        ]
+      },
+      "Medical Certificate": {
+        requirements: [
+          "Valid ID",
+          "Personal consultation with a licensed doctor"
+        ],
+        where: "Local health centers or Private Clinics",
+        steps: [
+          "Visit a licensed doctor or clinic",
+          "Undergo basic health checkup (vision, BP, etc.)",
+          "Request official medical certificate with doctor's license number",
+          "Pay consultation fee (₱200–₱600 on average)",
+          "Receive signed certificate"
+        ]
+      },
+      "Transcript of Records": {
+        requirements: [],
+        where: "Your college/university registrar's office",
+        steps: [
+          "Visit the school registrar or apply online (if available)",
+          "Request Transcript of Records",
+          "Pay applicable fees",
+          "Wait for release (usually 3–7 working days)"
+        ]
+      },
+      "Homeowners Association Certificate": {
+        requirements: ["Proof of residence within the subdivision (e.g., lease or valid ID)"],
+        where: "HOA Office",
+        steps: [
+          "Visit your HOA office or contact HOA officials",
+          "Request Certificate of Residency or Membership",
+          "Provide proof that you live in the area",
+          "Sign request form",
+          "Wait 1–3 days for release depending on HOA"
+        ]
+      },
+      "Community Tax Declaration Form": {
+        requirements: [
+          "Proof of land/property ownership",
+          "Valid ID"
+        ],
+        where: "Municipal Assessor’s Office",
+        steps: [
+          "Visit Assessor’s Office at City/Municipal Hall",
+          "Request and fill out the Tax Declaration form",
+          "Present proof of property and ID",
+          "Pay processing fee (if required)",
+          "Receive tax declaration document"
+        ]
+      },
+      "UMID": {
+        requirements: [
+          "SSS membership",
+          "Valid ID"
+        ],
+        where: "SSS branch",
+        steps: [
+          "Register as SSS member (if not yet)",
+          "Fill out UMID application form",
+          "Present proof of property and ID",
+          "Submit valid ID & biometrics",
+          "Wait for card delivery (within 30–45 days)"
+        ]
+      }
+    };
+
+
+    const popup = document.getElementById("popup");
+    const overlay = document.getElementById("overlay");
+    const popupTitle = document.getElementById("popupTitle");
+    const popupReqs = document.getElementById("popupReqs");
+    const popupWhere = document.getElementById("popupWhere").querySelector("span");
+    const popupSteps = document.getElementById("popupSteps");
+    const markDoneBtn = document.getElementById("markDoneBtn");
+    const alertMessage = document.getElementById("alertMessage");
+    let currentCard = null;
+
+    function renderCards(containerId, data) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+      data.forEach(id => {
+        const card = document.createElement("div");
+        card.className = "id-card";
+        card.dataset.id = id;
+        card.innerHTML = `<div class="id-header">${id}</div><div class="id-body">Click for details</div>`;
+        card.addEventListener("click", () => openPopup(card, id));
+        container.appendChild(card);
+      });
+    }
+
+    function renderOwnedCards(containerId, data) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+      data.forEach(id => {
+        const card = document.createElement("div");
+        card.className = "id-card done";
+        card.dataset.id = id;
+        card.innerHTML = `<div class="id-header">${id}</div><div class="id-body">Already Owned</div>`;
+        container.appendChild(card);
+      });
+    }
+
+    function openPopup(card, id) {
+      const info = idData[id];
+      if (!info) return;
+      currentCard = card;
+      popupTitle.textContent = id;
+      popupReqs.innerHTML = info.requirements.map(r => `<li><input type="checkbox"> ${r}</li>`).join('');
+      popupSteps.innerHTML = info.steps.map(s => `<li><input type="checkbox"> ${s}</li>`).join('');
+      popupWhere.innerHTML = info.where;
+      alertMessage.style.display = 'none';
+      popup.classList.add('active');
+      overlay.classList.add('active');
+    }
+
+    function closePopup() {
+      popup.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+
+    function checkPreviousCardsDone(card) {
+      const container = card.parentElement;
+      const cards = Array.from(container.children);
+      const cardIndex = cards.indexOf(card);
+      for(let i = 0; i < cardIndex; i++) {
+        if (!cards[i].classList.contains('done')) return false;
+      }
+      return true;
+    }
+
+    markDoneBtn.addEventListener('click', () => {
+  const checkboxes = popup.querySelectorAll('input[type="checkbox"]');
+  const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+
+  if (!allChecked) {
+    alertMessage.textContent = "Please check all items before marking as done.";
+    alertMessage.style.display = 'block';
+    return;
+  }
+
+  if (!checkPreviousCardsDone(currentCard)) {
+    alertMessage.textContent = "Please mark all previous cards as done first.";
+    alertMessage.style.display = 'block';
+    return;
+  }
+
+  if (currentCard) {
+    const id = currentCard.dataset.id;
+
+    // Move to "ownedIDs"
+    owned.push(id);
+    localStorage.setItem("userHas", JSON.stringify(owned));
+
+    // Remove from output1/output2
+    const output1Index = output1.indexOf(id);
+    if (output1Index !== -1) {
+      output1.splice(output1Index, 1);
+      localStorage.setItem("output1", JSON.stringify(output1));
+    }
+
+    const output2Index = output2.indexOf(id);
+    if (output2Index !== -1) {
+      output2.splice(output2Index, 1);
+      localStorage.setItem("output2", JSON.stringify(output2));
+    }
+
+    // Re-render
+    renderCards("output1", output1);
+    renderCards("output2", output2);
+    renderOwnedCards("ownedIDs", owned);
+
+    closePopup();
+  }
+});
+
+
+    // Fetch data from localStorage and render cards
+    const output1 = JSON.parse(localStorage.getItem("output1")) || ["Passport", "TIN ID", "SSS ID"];
+    const output2 = JSON.parse(localStorage.getItem("output2")) || ["PhilHealth ID", "NBI Clearance", "UMID ID"];
+    const owned = JSON.parse(localStorage.getItem("userHas")) || ["PhilSys ID", "Cedula"];
+
+    renderCards("output1", output1);
+    renderCards("output2", output2);
+    renderOwnedCards("ownedIDs", owned);
+  </script>
+
+ 
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'League Spartan', sans-serif;
+      background-color: #f5f5e8;
+    }
+
+    #dashboard {
+      background-image: url('bg1.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    header {
+      background-color: #dce3c1;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+      color: #2c2c2c;
+      text-decoration: none;
+    }
+
+
+    .nav-links a {
+     margin-left: 25px;
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: #b9c9a8;
+    }
+
+
+    .menu-container {
+      position: relative;
+      display: inline-block;
+      margin-left: 15px;
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-btn:hover {
+      background-color: #b9c9a8;
+    }
+        
+    .menu-container:hover .dropdown-menu {
+    display: block;
+  } 
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      z-index: 1;
+      min-width: 120px;
+      border-radius: 7px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+      .dropdown-menu a {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 10px;
+        margin: 0;
+        border-radius: 1;
+        text-decoration: none;
+        color: #333;
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #dce3c1;
+    }
+
+
+  main {
+    padding: 40px 0;
+    color: #2c2c2c;
+    flex-direction: column;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+
+   .menu-container {
+      position: relative;
+      display: inline-block;
+      margin-left: 15px;
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-btn:hover {
+      background-color: #b9c9a8;
+    }
+        
+    .menu-container:hover .dropdown-menu {
+    display: block;
+  } 
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      z-index: 1;
+      min-width: 120px;
+      border-radius: 7px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+      .dropdown-menu a {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 10px;
+        margin: 0;
+        border-radius: 1;
+        text-decoration: none;
+        color: #333;
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #dce3c1;
+    }
+
+    main .center-text h1 {
+      font-size: 96px;
+      font-weight: 900;
+      margin: 0;
+      letter-spacing: 4px;
+    }
+
+    main .center-text p {
+      font-size: 24px;
+      margin-top: 10px;
+      font-weight: 500;
+      color: #555;
+      text-transform: capitalize;
+    }
+    .start-btn {
+      margin-top: 50px;
+      padding: 14px 40px;
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      background-color: #b9c9a8;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .start-btn:hover {
+      background-color: #8fbf4f;
+    }
+    
+    .info-box {
+      display: inline-block;
+      text-align: center;
+      padding: 25px 30px;
+      max-width: 900px;
+      margin: 30px auto 20px;
+    }
+
+    .info-box h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 15px;
+
+    }
+
+
+    .info-box p {
+      font-size: 18px;
+      font-weight: 400;
+      color: #333;
+      margin: 8px 0;
+    }
+
+    .info-box .small {
+      font-size: 25px;
+      color: #666;
+    }
+
+          ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #a7c1a8;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+  </style>
+</head>
+<link rel="icon" href="icon.jpg" type="image/png">
+<body>
+  <div id="dashboard">
+    <header class="header">
+      <div class="logo">gulDe</div>
+      <nav class="nav-links">
+        <a href="guide.html">guIDe Me</a>
+        <a href="toporder.html">Tracker</a>
+        <a href="about.html">About gulDe</a>
+        <a href="profile.html">My Profile</a>
+        <div class="menu-container">
+          <button class="menu-btn">☰</button>
+          <div class="dropdown-menu">
+            <a href="#">Settings</a>
+            <a href="/login.html" id="logout-btn">Logout</a>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+
+        <main>
+      <div class="center-text">
+        <h1>guIDe</h1>
+        <p>Your guide to your ID</p>
+
+        <div class="info-box">
+          <h2>Struggling to figure out which government ID to get first?</h2>
+          <p>
+            guIDe is a free, beginner-friendly platform that helps you track, prioritize, and complete your government IDs in the right order — so you can get hired, open a bank account, and access benefits faster.
+          </p>
+            <p class="small">Built for <strong>first-time job seekers</strong> in the Philippines.</p>
+        </div>
+      </div>
+
+      <a href="guide.html" class="start-btn">See What You Can Apply For ➜</a>
+    </main>
+  </div>
+
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (!document.querySelector('.menu-container').contains(e.target)) {
+        dropdownMenu.style.display = 'none';
+      }
+    });
+  </script>
+
+  
+
+</body>
+</html>

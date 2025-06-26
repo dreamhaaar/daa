@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>guIDe</title>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet" />
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: 'League Spartan', sans-serif;
+      background-color: #f5f5e8;
+    }
+
+    header {
+      background-color: #dce3c1;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+      color: #2c2c2c;
+      text-decoration: none;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #b9c9a8;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      padding: 50px 20px;
+    }
+
+    .card {
+      background: #dbe3c3;
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .dropdown {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .dropdown input {
+      width: 88%;
+      padding: 12px 50px 12px 20px;
+      border-radius: 20px;
+      border: none;
+      background: #f5f5e8;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .tag {
+      background: #f5f5e8;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: 500;
+      margin-bottom: 5px; 
+      width: 99%;
+      position: relative;
+      box-sizing: border-box;
+    }
+
+     .menu-container {
+      position: relative;
+      display: inline-block;
+      margin-left: 15px;
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-btn:hover {
+      background-color: #b9c9a8;
+    }
+        
+    .menu-container:hover .dropdown-menu {
+    display: block;
+  } 
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      z-index: 1;
+      min-width: 120px;
+      border-radius: 7px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+      .dropdown-menu a {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 10px;
+        margin: 0;
+        border-radius: 1;
+        text-decoration: none;
+        color: #333;
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #dce3c1;
+    }
+
+    .remove-tag {
+      margin-left: 10px;
+      color: #a33;
+      font-weight: bold;
+      cursor: pointer;
+      float: right;
+      user-select: none;
+    }
+
+    .submit-btn, .clear-btn {
+      min-width: 100px;
+      padding: 10px 25px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn {
+      background: #234232;
+      color: white;
+    }
+
+    .submit-btn:hover {
+      background: #1b2e25;
+    }
+
+    .clear-btn {
+      background: #999;
+      color: white;
+    }
+
+    .clear-btn:hover {
+      background: #777;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 20px;
+      align-items: center;
+    }
+
+    .options-list {
+      background: #f5f5e8;
+      max-height: 150px;
+      overflow-y: auto;
+      border-radius: 10px;
+      margin-top: 5px;
+      padding: 10px;
+      position: absolute;
+      width: 100%;
+      z-index: 10;
+      display: none;
+    }
+
+    .options-list div {
+      padding: 8px 10px;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .options-list div:hover {
+      background: #dbe3c3;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f5f5e8;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #5A827E;
+      border-radius: 6px;
+    }
+
+    /* Popup styles */
+    #popup {
+      display: none;
+      position: fixed; 
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #popup > div {
+      background: #dbe3c3;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 350px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      color: #234232;
+      font-weight: 600;
+    }
+
+    .loading-dots-wrapper {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .loading-dots {
+      font-weight: 700;
+      font-size: 2rem;
+      color: #234232;
+      letter-spacing: 4px;
+      user-select: none;
+    }
+
+    .loading-dots span {
+      animation-name: blink;
+      animation-duration: 1.4s;
+      animation-iteration-count: infinite;
+      animation-fill-mode: both;
+    }
+
+    .loading-dots span:nth-child(1) { animation-delay: 0s; }
+    .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes blink {
+      0%, 20% { opacity: 0; }
+      50%, 100% { opacity: 1; }
+    }
+
+    .header-text {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .sub-text {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #3b3b3b;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<link rel="icon" href="icon.jpg" type="image/png">
+<body>
+  <header>
+    <a href="dashboard.html" class="logo">guIDe</a>
+    <nav>
+      <a href="guide.html">guIDe Me</a>
+      <a href="toporder.html">Tracker</a>
+      <a href="info.html">About gulDe</a>
+      <a href="profile.html">My Profile</a>
+      <div class="menu-container">
+            <button class="menu-btn">☰</button>
+            <div class="dropdown-menu">
+              <a href="#">Settings</a>
+              <a href="/login.html" id="logout-btn">Logout</a>
+
+            </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Anu-anong Government ID issued ang mayroon ka?</h2>
+      <p>What Government ID issued do you possess?</p>
+
+      <div class="dropdown">
+        <input type="text" placeholder="Choose Here" readonly id="dropdownInput">
+        <div class="options-list" id="optionsList"></div>
+      </div>
+
+      <div class="tags" id="selectedTags"></div>
+
+      <div class="btn-row">
+        <button class="submit-btn">Submit</button>
+        <button class="clear-btn" id="clearAllBtn">Clear All</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Popup Modal -->
+  <div id="popup">
+    <div>
+      <div class="loading-dots-wrapper">
+        <div class="loading-dots"><span>.</span><span>.</span><span>.</span></div>
+      </div>
+      <div class="header-text">Matching your documents</div>
+      <div class="sub-text">We're putting together a list of IDs you can apply for next!</div>
+      <p id="popupMessage"></p>
+    </div>
+  </div>
+<script src="/js/input.js"></script>
+<script src="/js/logic.js" defer></script>
+
+  <script>
+    // Sample list of selectable IDs
+    const availableIDs = Object.keys(idData);
+
+    // UI Elements
+    const dropdownInput = document.getElementById("dropdownInput");
+    const optionsList = document.getElementById("optionsList");
+    const selectedTags = document.getElementById("selectedTags");
+
+    let selectedIDs = [];
+
+    // Populate options on focus
+    dropdownInput.addEventListener("click", () => {
+      optionsList.innerHTML = "";
+      availableIDs.forEach(id => {
+        if (!selectedIDs.includes(id)) {
+          const option = document.createElement("div");
+          option.textContent = id;
+          option.addEventListener("click", () => {
+            selectedIDs.push(id);
+            updateSelectedTags();
+            optionsList.style.display = "none";
+          });
+          optionsList.appendChild(option);
+        }
+      });
+      optionsList.style.display = "block";
+    });
+
+    // Close dropdown on outside click
+    document.addEventListener("click", (e) => {
+      if (!dropdownInput.contains(e.target) && !optionsList.contains(e.target)) {
+        optionsList.style.display = "none";
+      }
+    });
+
+    // Render selected tags
+    function updateSelectedTags() {
+      selectedTags.innerHTML = "";
+      selectedIDs.forEach(id => {
+        const tag = document.createElement("div");
+        tag.className = "tag";
+        tag.innerHTML = `${id} <span class="remove-tag" onclick="removeTag('${id}')">&times;</span>`;
+        selectedTags.appendChild(tag);
+      });
+    }
+
+    // Remove tag
+    window.removeTag = function(id) {
+      selectedIDs = selectedIDs.filter(tag => tag !== id);
+      updateSelectedTags();
+    }
+
+    // Submit Button Logic
+    document.querySelector(".submit-btn").addEventListener("click", () => {
+      if (selectedIDs.length === 0) return;
+
+      // Save as owned, and recompute rest
+      owned = [...selectedIDs];
+      output1 = ["TIN ID", "SSS ID", "Passport"].filter(id => !owned.includes(id));
+      output2 = ["PhilHealth ID", "UMID"].filter(id => !owned.includes(id));
+
+      localStorage.setItem("userHas", JSON.stringify(owned));
+      localStorage.setItem("output1", JSON.stringify(output1));
+      localStorage.setItem("output2", JSON.stringify(output2));
+
+      renderCards("output1", output1);
+      renderCards("output2", output2);
+      renderOwnedCards("ownedIDs", owned);
+    });
+
+    // Clear All Button
+    document.getElementById("clearAllBtn").addEventListener("click", () => {
+      selectedIDs = [];
+      owned = [];
+      output1 = [];
+      output2 = [];
+      updateSelectedTags();
+      renderCards("output1", output1);
+      renderCards("output2", output2);
+      renderOwnedCards("ownedIDs", owned);
+    });
+  </script>
+
+</body>
+</html>

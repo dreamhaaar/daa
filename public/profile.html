@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'League Spartan', sans-serif;
+      background-color: #f5f5e8;
+      color: #2c2c2c;
+    }
+
+    header {
+      background-color: #dce3c1;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+      color: #2c2c2c;
+      text-decoration: none;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #b9c9a8;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: 0.3s ease;
+    }
+
+    .menu-container {
+      position: relative;
+      display: inline-block;
+      margin-left: 15px;
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-btn:hover {
+      background-color: #b9c9a8;
+    }
+
+    .menu-container:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      z-index: 1;
+      min-width: 120px;
+      border-radius: 7px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 10px;
+      margin: 0;
+      border-radius: 1;
+      text-decoration: none;
+      color: #333;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #dce3c1;
+    }
+
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .profile-info h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+      color: #4a6041;
+    }
+
+    .profile-info label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+
+    .profile-info input {
+      font-size: 16px;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 4px;
+      width: 100%;
+      max-width: 400px;
+      background-color: #f7fbe9;
+    }
+
+    .save-btn {
+      background-color: #b9c9a8;
+      color: #2c2c2c;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+      width: fit-content;
+    }
+
+    .save-btn:hover {
+      background-color: #a4b893;
+    }
+
+    hr {
+      margin: 30px 0 20px;
+      border: 1px dashed #ccc;
+    }
+
+    @media screen and (max-width: 768px) {
+      .profile-container {
+        text-align: center;
+        align-items: center;
+      }
+
+      .profile-info input {
+        text-align: center;
+      }
+    }
+  </style>
+  <link rel="icon" href="icon.jpg" type="image/png">
+</head>
+
+<body>
+  <header>
+    <a href="dashboard.html" class="logo">guIDe</a>
+    <nav>
+      <a href="guide.html">guIDe Me</a>
+      <a href="toporder.html">Tracker</a>
+      <a href="about.html">About guIDe</a>
+      <a href="profile.html">My Profile</a>
+      <div class="menu-container">
+        <button class="menu-btn">☰</button>
+        <div class="dropdown-menu">
+          <a href="#">Settings</a>
+        <a href="/login.html" id="logout-btn">Logout</a>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="profile-container">
+      <div class="profile-info">
+        <h2>My Profile</h2>
+        <form method="POST" action="/save-profile">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+          <label for="dateJoined">Date Joined:</label>
+          <input type="text" id="dateJoined" name="dateJoined" placeholder="e.g., March 1, 2025" required />
+
+          <label for="age">Age:</label>
+          <input type="number" id="age" name="age" placeholder="Enter your age" required />
+
+          <label for="gender">Gender:</label>
+          <input type="text" id="gender" name="gender" placeholder="Enter your gender" required />
+
+          <button class="save-btn" type="submit">Save Profile</button>
+        </form>
+
+
+      </div>
+    </div>
+    <hr>
+  </main>
+
+
+
+
+<script>
+  // ✅ Fetch profile data from your backend API
+  async function loadProfile() {
+    try {
+      const res = await fetch("/api/profile");
+      if (!res.ok) throw new Error("Failed to fetch profile");
+
+      const profile = await res.json();
+      console.log("Fetched profile:", profile); // For debugging
+
+      document.getElementById("name").value = profile.name || "";
+      document.getElementById("email").value = profile.email || "";
+      document.getElementById("dateJoined").value = profile.date_joined || "";
+      document.getElementById("age").value = profile.age || "";
+      document.getElementById("gender").value = profile.gender || "";
+    } catch (err) {
+      console.error("Error loading profile:", err);
+    }
+  }
+
+  // ✅ Check if redirect says the profile was saved successfully
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("success") === "true") {
+    alert("✅ Profile saved successfully!");
+    loadProfile(); // 🔄 Refresh the input boxes with latest saved data
+  }
+
+  // ✅ Load profile when the page first loads
+  window.addEventListener("DOMContentLoaded", loadProfile);
+</script>
+
+
+
+
+</body>
+
+</html>

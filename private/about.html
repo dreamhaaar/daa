@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>gulDe - Employment Document Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+    background-image: url('bg1.png');
+      font-family: 'League Spartan', sans-serif;
+      background-color: #f5f5e8;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #dce3c1;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+      color: #2c2c2c;
+      text-decoration: none;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #b9c9a8;
+    }
+
+    .menu-container {
+      position: relative;
+      display: inline-block;
+      margin-left: 15px;
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-btn:hover {
+      background-color: #b9c9a8;
+    }
+        
+    .menu-container:hover .dropdown-menu {
+    display: block;
+  } 
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      z-index: 1;
+      min-width: 120px;
+      border-radius: 7px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+      .dropdown-menu a {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 10px;
+        margin: 0;
+        border-radius: 1;
+        text-decoration: none;
+        color: #333;
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #dce3c1;
+    }
+
+.nav-links a {
+  text-decoration: none;
+  color: #222;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+  background-color: #b9c9a8;
+}
+
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .about-section {
+      background-color: #c9dcb3;
+      border-radius: 20px;
+      padding: 60px 80px;
+      margin-bottom: 60px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
+    .about-title {
+      font-size: 48px;
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: bold;
+    }
+
+    .about-text {
+      color: #2c3e50;
+      font-size: 18px;
+      line-height: 1.8;
+      text-align: justify;
+      margin-bottom: 30px;
+    }
+
+    .creators-section {
+      background-color: #c9dcb3;
+      border-radius: 20px;
+      padding: 60px 80px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
+    .creators-content {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+    }
+
+    .project-info {
+      flex: 1;
+      background-color: #293631;
+      border-radius: 15px;
+      padding: 40px;
+      color: white;
+      text-align: center;
+    }
+
+    .pup-logo {
+      width: 100px;
+      height: 100px;
+      background-image: url('logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+      margin: 0 auto 30px;
+    }
+
+    .project-description {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .creators-grid {
+      flex: 2;
+    }
+
+    .creators-title {
+      font-size: 48px;
+      color: #293631;
+      margin-bottom: 40px;
+      font-weight: bold;
+    }
+
+    .creators-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .creator-card {
+      background-color: rgba(220, 220, 220, 0.8);
+      border-radius: 15px;
+      padding: 30px 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .creator-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .creator-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #bbb;
+      margin: 0 auto 20px;
+      background-size: cover;
+      background-position: center;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .creator-name {
+      font-size: 16px;
+      color: #293631;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+
+      .about-section, .creators-section {
+        padding: 40px 30px;
+      }
+
+      .about-title, .creators-title {
+        font-size: 36px;
+      }
+
+      .creators-content {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .creators-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .creators-list {
+        grid-template-columns: 1fr;
+      }
+      .about-section, .creators-section {
+        padding: 30px 20px;
+      }
+    }
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #a7c1a8;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+  </style>
+</head>
+<link rel="icon" href="icon.jpg" type="image/png">
+<body>
+<header class="header">
+  <a href="dashboard.html" class="logo">gulDe</a>
+  <nav class="nav-links">
+        <a href="guide.html">guIDe Me</a>
+        <a href="toporder.html">Tracker</a>
+        <a href="about.html">About gulDe</a>
+        <a href="profile.html">My Profile</a>
+        <div class="menu-container">
+          <button class="menu-btn">☰</button>
+          <div class="dropdown-menu">
+            <a href="#">Settings</a>
+            <a href="/login.html" id="logout-btn">Logout</a>
+
+          </div>
+        </div>
+  </nav>
+</header>
+  <div class="container">
+    <section class="about-section">
+      <h1 class="about-title">About gulDe</h1>
+      <p class="about-text">
+        In the Philippines, around 1.93 million people were unemployed as of March 2025. A key barrier to employment is the complex and often overwhelming process of gathering required documents—like NBI clearances, medical certificates, and valid IDs. Without proper documentation, job seekers face delays in hiring, payroll setup, and access to social security benefits.
+      </p>
+      <p class="about-text">
+        For many first-time and low-income job seekers, this process is stressful due to a lack of guidance, time, and financial resources. Research shows that digital solutions, particularly web-based tracking systems, can significantly improve efficiency and user experience.
+      </p>
+      <p class="about-text">
+        Our platform offers an accessible, tech-driven solution to simplify document collection, using smart task prioritization to reduce delays and support job seekers in navigating this critical step toward employment.
+      </p>
+    </section>
+
+    <section class="creators-section">
+      <div class="creators-content">
+        <div class="project-info">
+          <div class="pup-logo"></div>
+          <p class="project-description">
+            Developed by PUP students, this web app addresses the challenges faced by first-time job seekers in the Philippines by streamlining the document acquisition process. Using a topological sort approach, the app prioritizes and tracks essential employment documents, offering a user-friendly solution to reduce delays and simplify the path to employment.
+          </p>
+        </div>
+
+        <div class="creators-grid">
+          <h2 class="creators-title">gulDe creators</h2>
+          <div class="creators-list">
+            <div class="creator-card">
+              <div class="creator-photo" style="background-image: url('/images/members/enz.jpg');"></div>
+              <div class="creator-name">Joshua Enzo Carpio</div>
+            </div>
+            <div class="creator-card">
+              <div class="creator-photo" style="background-image: url('/images/members/cai.jpg');"></div>
+              <div class="creator-name">Cassandra Rosel</div>
+            </div>
+            <div class="creator-card">
+              <div class="creator-photo" style="background-image: url('/images/members/and.png');"></div>
+              <div class="creator-name">Andrea Mhar De Leon</div>
+            </div>
+            <div class="creator-card">
+              <div class="creator-photo" style="background-image: url('/images/members/ali.jpg');"></div>
+              <div class="creator-name">Aaliyah Reign Sanchez</div>
+            </div>
+            <div class="creator-card">
+              <div class="creator-photo" style="background-image: url('/images/members/mar.jpg');"></div>
+              <div class="creator-name">Marlon Sumayang Jr.</div>
+            </div>
+            <div class="creator-card">
+              <div class="creator-photo" style="background-image: url('/images/members/nish.jpg');"></div>
+              <div class="creator-name">Anisha Shen Tagum</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>guIDe Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="icon.jpg" type="image/png" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'League Spartan', sans-serif;
+      background-color: #f5f5e8;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    .left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .left h1 {
+      font-size: 200px;
+      font-weight: bold;
+      color: #2f3e36;
+      margin: 0;
+    }
+
+    .left p {
+      font-size: 25px;
+      margin-top: 1px;
+      color: #333;
+    }
+
+    .right {
+      flex: 1;
+      max-width: 500px;
+      background-color: #a7c1a8;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      border-radius: 20px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: auto;
+    }
+
+    .right h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #2f3e36;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .forgot {
+      text-align: right;
+      margin-bottom: 15px;
+      font-size: 12px;
+      color: #333;
+      text-decoration: none;
+    }
+
+    button[type="submit"] {
+      background-color: #2f3e36;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #1f2a27;
+    }
+
+    .divider {
+      text-align: center;
+      margin: 10px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .social-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .social-buttons button {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 25px;
+      background-color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-size: 16px;
+    }
+
+    .social-buttons .icon {
+      width: 25px;
+      height: 25px;
+      object-fit: contain;
+    }
+
+    .social-buttons button:hover {
+      background-color: #2f3e36;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <h1>guIDe</h1>
+      <p>Your guide to your ID.</p>
+    </div>
+
+    <div class="right">
+      <h2>Welcome to, guIDe</h2>
+      <form method="POST" action="/login">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+
+        <a href="#" class="forgot">Forgot Password</a>
+
+        <button type="submit">Log In</button>
+      </form>
+
+      <div class="divider">Continue with</div>
+      <div class="social-buttons">
+        <button onclick="alert('Google login coming soon')" id="gg">
+          <img src="/images/web/bggg.png" alt="Google Icon" class="icon" />
+          Google
+        </button>
+        <button onclick="alert('Facebook login coming soon')" id="fb">
+          <img src="/images/web/bgfb.png" alt="Facebook Icon" class="icon" />
+          Facebook
+        </button>
+      </div>
+      <div style="text-align: center; margin-top: 15px;">
+        <span>Don't have an account? <a href="/signup.html" style="font-weight: bold; text-decoration: none; color: #2f3e36;">Sign up here</a></span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
