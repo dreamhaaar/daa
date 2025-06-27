@@ -47,26 +47,7 @@ app.get("/dashboard.html", (req, res) => {
 
 
 
-app.get("/guide.html", (req, res) => {
-  if (!req.session.user) {
-    return res.redirect("/login.html");
-  }
-  res.sendFile(path.join(__dirname, "private", "guide.html"));
-});
 
-app.get("/toporder.html", (req, res) => {
-  if (!req.session.user) {
-    return res.redirect("/login.html");
-  }
-  res.sendFile(path.join(__dirname, "private", "toporder.html"));
-});
-
-app.get("/about.html", (req, res) => {
-  if (!req.session.user) {
-    return res.redirect("/login.html");
-  }
-  res.sendFile(path.join(__dirname, "private", "about.html"));
-});
 
 app.post("/save-profile", async (req, res) => {
   if (!req.session.user) {
